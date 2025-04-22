@@ -1,0 +1,4 @@
+name = "JuLox"
+uuid = "c9db5115-e393-4d07-8882-3339bde6edf7"
+authors = ["alsoblank <luke.causer@outlook.com>"]
+version = "0.1.0"
