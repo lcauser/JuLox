@@ -53,8 +53,7 @@ struct Token
     type::TokenType 
     lexeme::String 
     line::Int
-    # a literal julia representation of the value: we can restrict this later
-    literal 
+    literal::Union{Float64, String, Char, Nothing}
 end
 
 function string(token::Token)
