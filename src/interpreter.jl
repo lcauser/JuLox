@@ -26,7 +26,7 @@ function _run_prompt()
     while true
         print("> ")
         val = readline()
-        if isnothing(val)
+        if val == ""
             break
         end
         _run(val)
@@ -48,6 +48,6 @@ end
 
 function _report(line::Int, pos::String, message::String)
     println(
-        "[line " * line * "] Error" * pos + ": " * message
+        "[line " * string(line) * "] Error" * pos * ": " * message
     )
 end

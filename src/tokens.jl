@@ -60,3 +60,22 @@ end
 function string(token::Token)
     return token.type * " " * token.lexeme * " " * token.literal
 end
+
+keywords = Dict(
+    "and" => AND,
+    "class" => CLASS,
+    "else" => ELSE,
+    "false" => FALSE,
+    "for" => FOR,
+    "fun" => FUN,
+    "if" => IF,
+    "nul" => NIL,
+    "or" => OR,
+    "print" => PRINT,
+    "return" => RETURN,
+    "super" => SUPER,
+    "this" => THIS,
+    "true" => TRUE,
+    "var" => VAR,
+    "while" => WHILE
+)
