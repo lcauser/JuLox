@@ -14,7 +14,7 @@ export TokenType, Token, to_string
     SLASH 
     STAR 
 
-    # one of two character tokens
+    # one or two character tokens
     BANG 
     BANG_EQUAL 
     EQUAL 
@@ -49,11 +49,13 @@ export TokenType, Token, to_string
     EOF
 end
 
+LiteralUnion = Union{Float64, String, Char, Nothing}
+
 struct Token
     type::TokenType 
     lexeme::String 
     line::Int
-    literal::Union{Float64, String, Char, Nothing}
+    literal::LiteralUnion
 end
 
 function string(token::Token)
