@@ -37,9 +37,9 @@ end
 # Tokenizes the input and inteprets it
 function _run(source::String)
     scanner = Scanner(source)
-    for token in scanner.tokens
-        println(token)
-    end
+    parser = Parser(scanner.tokens)
+    expression = parse(parser)
+    print(print_expression(expression))
 end
 
 function error(line::Int, message::String)
