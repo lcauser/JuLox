@@ -43,11 +43,5 @@ function _run(source::String)
 end
 
 function error(line::Int, message::String)
-    _report(line, "", message)
-end
-
-function _report(line::Int, pos::String, message::String)
-    println(
-        "[line " * string(line) * "] Error" * pos * ": " * message
-    )
+    report(line, "", message)
 end

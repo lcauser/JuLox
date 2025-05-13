@@ -16,6 +16,11 @@ end
 
 
 ### Recursive AST generation
+"""
+    parse(parser::Parser)
+
+Recurses throw the tokens to determine an expression.
+"""
 function Base.parse(parser::Parser)
     try
         return expression!(parser)
@@ -94,7 +99,7 @@ function primary!(parser::Parser)
         return Grouping(expr)
     end
 
-    throw(error(parser, peek(parser), "Expect expression."))
+    throw(error(peek(parser), "Expect expression."))
 end
 
 
@@ -155,14 +160,14 @@ Base.showerror(io::IO, err::ParseException) = print(io, err.message)
 function consume!(parser::Parser, type::TokenType, message::String)
     check(parser, type) && return advance!(parser)
 
-    throw(error(parser, peek(parser), message))
+    throw(error(peek(parser), message))
 end
 
-function error(parser::Parser, token::Token, message::String)
+function error(token::Token, message::String)
     if token.type == EOF
-        report(parser::Parser, token.line, " at end", message)
+        report(token.line, " at end", message)
     else
-        report(parser::Parser, token.line, " at '" * str(token.lexeme) * "'", message)
+        report(token.line, " at '" * str(token.lexeme) * "'", message)
     end
 end
 
